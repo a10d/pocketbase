@@ -11,6 +11,15 @@ import (
 // bindHealthApi registers the health api endpoint.
 func bindHealthApi(app core.App, rg *router.RouterGroup[*core.RequestEvent]) {
 	subGroup := rg.Group("/health")
+
+	subGroup.BindFunc(func(e *core.RequestEvent) error {
+		if !app.Settings().Logs.LogHealthApi {
+			subGroup.Bind(SkipSuccessActivityLog())
+		}
+		
+		return nil
+	})
+
 	subGroup.GET("", healthCheck)
 }
 

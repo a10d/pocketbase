@@ -122,6 +122,11 @@
                 <input type="checkbox" id={uniqueId} bind:checked={formSettings.logs.logAuthId} />
                 <label for={uniqueId}>Enable Auth Id logging</label>
             </Field>
+
+            <Field class="form-field form-field-toggle" name="logs.logHealthApi" let:uniqueId>
+                <input type="checkbox" id={uniqueId} bind:checked={formSettings.logs.logHealthApi} />
+                <label for={uniqueId}>Enable Logging for Health-checks</label>
+            </Field>
         </form>
     {/if}
 

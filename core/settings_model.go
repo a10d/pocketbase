@@ -150,8 +150,9 @@ func newDefaultSettings() *Settings {
 				SenderAddress: "support@example.com",
 			},
 			Logs: LogsConfig{
-				MaxDays: 5,
-				LogIP:   true,
+				MaxDays:      5,
+				LogIP:        true,
+				LogHealthApi: true,
 			},
 			SMTP: SMTPConfig{
 				Enabled:  false,
@@ -509,10 +510,11 @@ func (c MetaConfig) Validate() error {
 // -------------------------------------------------------------------
 
 type LogsConfig struct {
-	MaxDays   int  `form:"maxDays" json:"maxDays"`
-	MinLevel  int  `form:"minLevel" json:"minLevel"`
-	LogIP     bool `form:"logIP" json:"logIP"`
-	LogAuthId bool `form:"logAuthId" json:"logAuthId"`
+	MaxDays      int  `form:"maxDays" json:"maxDays"`
+	MinLevel     int  `form:"minLevel" json:"minLevel"`
+	LogIP        bool `form:"logIP" json:"logIP"`
+	LogAuthId    bool `form:"logAuthId" json:"logAuthId"`
+	LogHealthApi bool `form:"logHealthApi" json:"logHealthApi"`
 }
 
 // Validate makes LogsConfig validatable by implementing [validation.Validatable] interface.
